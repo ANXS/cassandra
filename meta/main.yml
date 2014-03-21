@@ -1,0 +1,17 @@
+# file: cassandra/meta/main.yml
+
+galaxy_info:
+  author: pjan vandaele
+  company: Ansibles
+  description: Install and configure Apache Cassandra
+  min_ansible_version: 1.5
+  license: MIT
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  categories:
+  - system
+
+dependencies:
+  - role: Ansibles.oracle-jdk

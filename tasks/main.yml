@@ -1,0 +1,3 @@
+# file: cassandra/tasks/main.yml
+
+- include: source.yml

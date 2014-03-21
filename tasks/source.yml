@@ -1,0 +1,53 @@
+# file: cassandra/tasks/source.yml
+
+- include: user.yml
+
+- name: Cassandra | Make sure the cassandra dependencies are installed
+  apt:
+    pkg: "{{item}}"
+    state: present
+  with_items: ["libboost-all-dev", "libboost-dev", "pkg-config"]
+
+- name: Cassandra | Download the Cassandra source release if not yet present
+  get_url:
+    url: "http://archive.apache.org/dist/cassandra/{{cassandra_source_version}}/apache-cassandra-{{cassandra_source_version}}-bin.tar.gz"
+    dest: "/tmp/appache-cassandra-{{cassandra_source_version}}-bin.tar.gz"
+
+- name: Cassandra | Make sure the cassandra install dir is present
+  file:
+    path: /usr/loca/etc/cassandra
+    state: directory
+    recurse: yes
+
+- name: Cassandra | Unpack the compressed cassandra binaries
+  command: tar -xvzf /tmp/appache-cassandra-{{cassandra_source_version}}.tar.gz chdir=/usr/local/etc/cassandra creates=/usr/local/etc/cassandra/apache-cassandra-{{cassandra_version}}
+
+- name: Cassandra | Update the symbolic link to the cassandra install
+  file:
+    path: /usr/local/etc/cassandra/default
+    src: "/usr/local/etc/cassandra/apache-cassandra-{{cassandra_version}}"
+    state: link
+    force: yes
+
+- name: Cassandra | Inform the system where the cassandra-cli binary is located
+  command: update-alternatives --install "/usr/bin/cassandra-cli" "cassandra-cli" "/usr/local/etc/cassandra/default/bin/cassandra-cli" 1
+
+- name: Cassandra | Set the system default for cassandra-cli
+  command: update-alternatives --set cassandra-cli /usr/local/etc/cassandra/default/bin/cassandra-cli
+
+- name: Cassandra | Make sure the working (data) directory for cassandra is present
+  file:
+    path: "{{cassandra_data_dir}}"
+    owner: "{{cassandra_user}}"
+    group: "{{cassandra_group}}"
+    mode: 0750
+    state: directory
+
+- name: Cassandra | Make sure the working subdirectories for cassandra are present
+  file:
+    path: "{{cassandra_data_dir}}/{{item}}"
+    owner: "{{cassandra_user}}"
+    group: "{{cassandra_group}}"
+    mode: 0750
+    state: directory
+  with_items: ["data", "commitlog", "saved_caches"]
