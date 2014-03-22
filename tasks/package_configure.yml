@@ -16,3 +16,5 @@
     - "commitlog_archiving.properties"
     - "log4j-server.properties"
     - "log4j-tools.properties"
+  notify:
+    - restart cassandra
