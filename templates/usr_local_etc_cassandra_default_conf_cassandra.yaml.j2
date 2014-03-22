@@ -110,10 +110,10 @@ partitioner: {{cassandra_partitioner}}
 # will spread data evenly across them, subject to the granularity of
 # the configured compaction strategy.
 data_file_directories:
-    - {{cassandra_data_root_dir}}/data
+    - {{cassandra_data_dir}}/data
 
 # commit log
-commitlog_directory: {{cassandra_data_root_dir}}/commitlog
+commitlog_directory: {{cassandra_data_dir}}/commitlog
 
 # policy for data disk failures:
 # stop: shut down gossip and Thrift, leaving the node effectively dead, but
@@ -188,7 +188,7 @@ row_cache_save_period: {{cassandra_row_cache_save_period}}
 memory_allocator: {{cassandra_memory_allocator}}
 
 # saved caches
-saved_caches_directory: {{cassandra_data_root_dir}}/saved_caches
+saved_caches_directory: {{cassandra_data_dir}}/saved_caches
 
 # commitlog_sync may be either "periodic" or "batch."
 # When in batch mode, Cassandra won't ack writes until the commit log
