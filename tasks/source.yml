@@ -50,3 +50,11 @@
     mode: 0750
     state: directory
   with_items: ["data", "commitlog", "saved_caches"]
+
+- name: Cassandra | Install the cassandra init script
+  template:
+    src: "etc_init.d_cassandra.j2"
+    dest: "/etc/init.d/cassandra"
+    owner: root
+    group: root
+    mode: 0755
