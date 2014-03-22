@@ -17,7 +17,7 @@
     uid: "{{cassandra_uid}}"
     group: "{{cassandra_group}}"
     comment: "Cassandra user"
-    home: "{{cassandra_www_dir}}"
+    home: "{{cassandra_user_dir}}"
     shell: /bin/bash
     state: present
 

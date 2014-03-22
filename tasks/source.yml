@@ -10,22 +10,21 @@
 
 - name: Cassandra | Download the Cassandra source release if not yet present
   get_url:
-    url: "http://archive.apache.org/dist/cassandra/{{cassandra_source_version}}/apache-cassandra-{{cassandra_source_version}}-bin.tar.gz"
-    dest: "/tmp/appache-cassandra-{{cassandra_source_version}}-bin.tar.gz"
+    url: "{{cassandra_source_url}}"
+    dest: "/tmp/apache-cassandra-{{cassandra_source_version}}-bin.tar.gz"
 
 - name: Cassandra | Make sure the cassandra install dir is present
   file:
-    path: /usr/loca/etc/cassandra
+    path: /usr/local/etc/cassandra
     state: directory
-    recurse: yes
 
 - name: Cassandra | Unpack the compressed cassandra binaries
-  command: tar -xvzf /tmp/appache-cassandra-{{cassandra_source_version}}.tar.gz chdir=/usr/local/etc/cassandra creates=/usr/local/etc/cassandra/apache-cassandra-{{cassandra_version}}
+  command: tar -xvzf /tmp/apache-cassandra-{{cassandra_source_version}}-bin.tar.gz chdir=/usr/local/etc/cassandra creates=/usr/local/etc/cassandra/apache-cassandra-{{cassandra_source_version}}
 
 - name: Cassandra | Update the symbolic link to the cassandra install
   file:
     path: /usr/local/etc/cassandra/default
-    src: "/usr/local/etc/cassandra/apache-cassandra-{{cassandra_version}}"
+    src: "/usr/local/etc/cassandra/apache-cassandra-{{cassandra_source_version}}"
     state: link
     force: yes
 
