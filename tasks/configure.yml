@@ -3,10 +3,10 @@
 - name: Cassandra | Make sure the cassandra log directory exists
   file:
     path: "/var/log/cassandra"
-    user: "{{cassandra_user}}"
+    owner: "{{cassandra_user}}"
     group: "{{cassandra_group}}"
     state: directory
-    chmod: 0755
+    mode: 0755
 
 - name: Cassandra | Update the cassandra configuration
   template:
