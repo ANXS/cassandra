@@ -1,0 +1,18 @@
+# file: cassandra/tasks/package_configure.yml
+
+- name: Cassandra | Update the cassandra configuration
+  template:
+    src: "{{item}}.j2"
+    dest: "/etc/cassandra/{{item}}"
+    owner: "{{cassandra_user}}"
+    group: "{{cassandra_group}}"
+    mode: 0644
+  with_items:
+    - "cassandra-env.sh"
+    - "cassandra-rackdc.properties"
+    - "cassandra-topology.properties"
+    - "cassandra-topology.yaml"
+    - "cassandra.yaml"
+    - "commitlog_archiving.properties"
+    - "log4j-server.properties"
+    - "log4j-tools.properties"

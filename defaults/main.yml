@@ -19,7 +19,7 @@ cassandra_heap_newsize:
 
 
 # cassandra.yaml basic configuration parameters
-cassandra_cluster_name: "Test Cluster"
+cassandra_cluster_name: "Default Cluster"
 cassandra_initial_token: " "                                            # in case of cluster must be calculated
 cassandra_listen_address: localhost
 cassandra_seeds: ["localhost"]

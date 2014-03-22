@@ -22,3 +22,5 @@
     name: "cassandra"
     state: present
     update_cache: yes
+
+- include: package_configure.yml
