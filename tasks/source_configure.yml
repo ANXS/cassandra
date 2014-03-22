@@ -1,4 +1,4 @@
-# file: cassandra/tasks/configure.yml
+# file: cassandra/tasks/source_configure.yml
 
 - name: Cassandra | Make sure the cassandra log directory exists
   file:
@@ -10,7 +10,7 @@
 
 - name: Cassandra | Update the cassandra configuration
   template:
-    src: "usr_local_etc_cassandra_default_conf_{{item}}.j2"
+    src: "{{item}}.j2"
     dest: "/usr/local/etc/cassandra/default/conf/{{item}}"
     owner: "{{cassandra_user}}"
     group: "{{cassandra_group}}"
