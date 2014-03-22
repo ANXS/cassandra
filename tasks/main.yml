@@ -2,4 +2,3 @@
 
 - include: source.yml
   when: cassandra_install_method == "source"
-- include: configure.yml
