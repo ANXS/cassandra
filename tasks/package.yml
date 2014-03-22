@@ -1,0 +1,24 @@
+# file: cassandra/tasks/package.yml
+
+- include: user.yml
+
+- name: Cassandra | Make sure the ansible required dependencies are installed
+  apt:
+    pkg: "python-pycurl"
+    state: present
+
+- name: Cassandra | Add the datastax repository apt-key
+  apt_key:
+    url: "http://debian.datastax.com/debian/repo_key"
+    state: present
+
+- name: Cassandra | Add the datastax repository
+  apt_repository:
+    repo: "deb http://debian.datastax.com/community stable main"
+    state: present
+
+- name: Cassandra | Install the cassandra package
+  apt:
+    name: "cassandra"
+    state: present
+    update_cache: yes

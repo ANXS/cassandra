@@ -2,3 +2,5 @@
 
 - include: source.yml
   when: cassandra_install_method == "source"
+- include: package.yml
+  when: cassandra_install_method == "package"
