@@ -18,7 +18,7 @@ cassandra_heap_newsize: null
 
 
 # cassandra.yaml basic configuration parameters
-cassandra_cluster_name: "Default Cluster"
+cassandra_cluster_name: "Test Cluster"
 cassandra_num_tokens: "256"
 cassandra_initial_token: null
 cassandra_listen_address: "localhost"
@@ -72,8 +72,6 @@ cassandra_thrift_framed_transport_size_in_mb: "15"
 cassandra_incremental_backups: "false"
 cassandra_snapshot_before_compaction: "false"
 cassandra_auto_snapshot: "true"
-cassandra_tombstone_warn_treshold: "1000"
-cassandra_tombstone_failure_treshold: "100000"
 cassandra_column_index_size_in_kb: "64"
 cassandra_in_memory_compaction_limit_in_mb: "64"
 cassandra_multithreaded_compaction: "false"
