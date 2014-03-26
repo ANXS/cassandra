@@ -146,6 +146,11 @@ else
     fi
 fi
 
+if [ "x$MALLOC_ARENA_MAX" = "x" ]
+then
+    MALLOC_ARENA_MAX=4
+fi
+
 # Specifies the default port over which Cassandra will be available for
 # JMX connections.
 JMX_PORT="7199"
@@ -189,15 +194,11 @@ fi
 
 startswith() { [ "${1#$2}" != "$1" ]; }
 
-if [ "`uname`" = "Linux" ] ; then
-    # reduce the per-thread stack size to minimize the impact of Thrift
-    # thread-per-client.  (Best practice is for client connections to
-    # be pooled anyway.) Only do so on Linux where it is known to be
-    # supported.
-    # u34 and greater need 228k
-    JVM_OPTS="$JVM_OPTS -Xss228k"
-fi
-echo "xss = $JVM_OPTS"
+# Per-thread stack size.
+JVM_OPTS="$JVM_OPTS -Xss256k"
+
+# Larger interned string table, for gossip's benefit (CASSANDRA-6410)
+JVM_OPTS="$JVM_OPTS -XX:StringTableSize=1000003"
 
 # GC tuning options
 JVM_OPTS="$JVM_OPTS -XX:+UseParNewGC"
@@ -209,7 +210,7 @@ JVM_OPTS="$JVM_OPTS -XX:CMSInitiatingOccupancyFraction=75"
 JVM_OPTS="$JVM_OPTS -XX:+UseCMSInitiatingOccupancyOnly"
 JVM_OPTS="$JVM_OPTS -XX:+UseTLAB"
 # note: bash evals '1.7.x' as > '1.7' so this is really a >= 1.7 jvm check
-if [ "$JVM_VERSION" \> "1.7" ] ; then
+if [ "$JVM_VERSION" \> "1.7" ] && [ "$JVM_ARCH" = "64-Bit" ] ; then
     JVM_OPTS="$JVM_OPTS -XX:+UseCondCardMark"
 fi
 

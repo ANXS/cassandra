@@ -2,6 +2,8 @@
 
 - include: user.yml
 
+- include_vars: "package.yml"
+
 - name: Cassandra | Make sure the ansible required dependencies are installed
   apt:
     pkg: "python-pycurl"

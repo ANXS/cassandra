@@ -9,16 +9,12 @@ cassandra_group: "cassandra"
 cassandra_uid: 3455
 cassandra_gid: 3455
 
-cassandra_source_user_dir: "/app/home/{{cassandra_user}}"
+cassandra_user_dir: "/app/home/{{cassandra_user}}"
 cassandra_source_data_dir: "/app/cassandra"
-cassandra_package_data_dir: "/var/lib/cassandra"
-
-cassandra_data_dir: {% if cassandra_install_method == "source" %}{{cassandra_source_data_dir}}{% else %}{{cassandra_package_data_dir}}{% endif %}
-
 
 # cassandra-env.sh configuration parameters
-cassandra_max_heap_size:
-cassandra_heap_newsize:
+cassandra_max_heap_size: nil
+cassandra_heap_newsize: nil
 
 
 # cassandra.yaml basic configuration parameters

@@ -2,6 +2,8 @@
 
 - include: user.yml
 
+- include_vars: "source.yml"
+
 - name: Cassandra | Make sure the cassandra dependencies are installed
   apt:
     pkg: "{{item}}"

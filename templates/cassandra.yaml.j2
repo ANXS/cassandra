@@ -36,7 +36,7 @@ num_tokens: {{cassandra_num_tokens}}
 # a random token, which will lead to hot spots.
 {% if cassandra_initial_token %}
 initial_token: {{cassandra_initial_token}}
-{% endif %cassandra_install_method: "source"}
+{% endif %}
 
 # See http://wiki.apache.org/cassandra/HintedHandoff
 hinted_handoff_enabled: {{cassandra_hinted_handoff_enabled}}

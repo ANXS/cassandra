@@ -1,0 +1,3 @@
+# file: cassandra/vars/source.yml
+
+cassandra_data_dir: "{{cassandra_source_data_dir}}"
