@@ -13,14 +13,14 @@ cassandra_user_dir: "/app/home/{{cassandra_user}}"
 cassandra_source_data_dir: "/app/cassandra"
 
 # cassandra-env.sh configuration parameters
-cassandra_max_heap_size: nil
-cassandra_heap_newsize: nil
+cassandra_max_heap_size: null
+cassandra_heap_newsize: null
 
 
 # cassandra.yaml basic configuration parameters
 cassandra_cluster_name: "Default Cluster"
 cassandra_num_tokens: "256"
-cassandra_initial_token: nil
+cassandra_initial_token: null
 cassandra_listen_address: "localhost"
 cassandra_seeds: ["localhost"]
 cassandra_endpoint_snitch: "SimpleSnitch"                               # in case of cluster: RackInferringSnitch
@@ -62,12 +62,12 @@ cassandra_start_rpc: "true"
 cassandra_rpc_port: "9160"
 cassandra_rpc_keepalive: "true"
 cassandra_rpc_server_type: "sync"
-cassandra_rpc_min_threads: nil
-cassandra_rpc_max_threads: nil
-cassandra_rpc_send_buff_size_in_bytes: nil
-cassandra_rpc_recv_buff_size_in_bytes: nil
-cassandra_internode_send_buff_size_in_bytes: nil
-cassandra_internode_recv_buff_size_in_bytes: nil
+cassandra_rpc_min_threads: null
+cassandra_rpc_max_threads: null
+cassandra_rpc_send_buff_size_in_bytes: null
+cassandra_rpc_recv_buff_size_in_bytes: null
+cassandra_internode_send_buff_size_in_bytes: null
+cassandra_internode_recv_buff_size_in_bytes: null
 cassandra_thrift_framed_transport_size_in_mb: "15"
 cassandra_incremental_backups: "false"
 cassandra_snapshot_before_compaction: "false"
