@@ -25,7 +25,7 @@ cassandra_listen_address: "localhost"
 cassandra_seeds: ["localhost"]
 cassandra_endpoint_snitch: "SimpleSnitch"                               # in case of cluster: RackInferringSnitch
 
-cassandra_rpc_address: 0.0.0.0
+cassandra_rpc_address: "localhost"
 cassandra_concurrent_reads: "32"
 cassandra_concurrent_writes: "32"
 
