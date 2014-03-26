@@ -21,7 +21,7 @@ cluster_name: '{{cassandra_cluster_name}}'
 #
 # If you already have a cluster with 1 token per node, and wish to migrate to
 # multiple tokens per node, see http://wiki.apache.org/cassandra/Operations
-# num_tokens: 256
+num_tokens: {{cassandra_num_tokens}}
 
 # If you haven't specified num_tokens, or have set it to the default of 1 then
 # you should always specify InitialToken when setting up a production
@@ -34,7 +34,9 @@ cluster_name: '{{cassandra_cluster_name}}'
 # the heaviest-loaded existing node.  If there is no load information
 # available, such as is the case with a new cluster, it will pick
 # a random token, which will lead to hot spots.
+{% if cassandra_initial_token %}
 initial_token: {{cassandra_initial_token}}
+{% endif %cassandra_install_method: "source"}
 
 # See http://wiki.apache.org/cassandra/HintedHandoff
 hinted_handoff_enabled: {{cassandra_hinted_handoff_enabled}}
@@ -360,12 +362,13 @@ rpc_server_type: {{cassandra_rpc_server_type}}
 # encouraged to set a maximum that makes sense for you in production, but do keep in mind that
 # rpc_max_threads represents the maximum number of client requests this server may execute concurrently.
 #
-# rpc_min_threads: 16
-# rpc_max_threads: 2048
+{% if cassandra_rpc_min_threads %}rpc_min_threads: {{cassandra_rpc_min_threads}}{% endif %}
+{% if cassandra_rpc_max_threads %}rpc_max_threads: {{cassandra_rpc_max_threads}}{% endif %}
 
 # uncomment to set socket buffer sizes on rpc connections
-# rpc_send_buff_size_in_bytes:
-# rpc_recv_buff_size_in_bytes:
+{% if cassandra_rpc_send_buff_size_in_bytes %}rpc_send_buff_size_in_bytes: {{cassandra_rpc_send_buff_size_in_bytes}}{% endif %}
+{% if cassandra_rpc_recv_buff_size_in_bytes %}rpc_recv_buff_size_in_bytes: {{cassandra_rpc_recv_buff_size_in_bytes}}{% endif %}
+
 
 # Uncomment to set socket buffer size for internode communication
 # Note that when setting this, the buffer size is limited by net.core.wmem_max
@@ -376,8 +379,8 @@ rpc_server_type: {{cassandra_rpc_server_type}}
 # /proc/sys/net/ipv4/tcp_wmem
 # /proc/sys/net/ipv4/tcp_wmem
 # and: man tcp
-# internode_send_buff_size_in_bytes:
-# internode_recv_buff_size_in_bytes:
+{% if cassandra_internode_send_buff_size_in_bytes %}internode_send_buff_size_in_bytes: {{cassandra_internode_send_buff_size_in_bytes}}{% endif %}
+{% if cassandra_internode_recv_buff_size_in_bytes %}internode_recv_buff_size_in_bytes: {{cassandra_internode_recv_buff_size_in_bytes}}{% endif %}
 
 # Frame size for thrift (maximum message length).
 thrift_framed_transport_size_in_mb: {{cassandra_thrift_framed_transport_size_in_mb}}
@@ -399,6 +402,9 @@ snapshot_before_compaction: {{cassandra_snapshot_before_compaction}}
 # should be used to provide data safety. If you set this flag to false, you will
 # lose data on truncation or drop.
 auto_snapshot: {{cassandra_auto_snapshot}}
+
+tombstone_warn_treshold: {{cassandra_tombstone_warn_treshold}}
+tombstone_failure_treshold: {{cassandra_tombstone_failure_treshold}}
 
 # Add column indexes to a row after its contents reach this size.
 # Increase if your column values are large, or if you have a very large
