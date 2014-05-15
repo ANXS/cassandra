@@ -131,7 +131,7 @@ esac
 
 {% if cassandra_max_heap_size and cassandra_heap_newsize %}
 MAX_HEAP_SIZE="{{cassandra_max_heap_size}}"
-HEAP_NEWSIZE="{{cassandra_max_heap_size}}"
+HEAP_NEWSIZE="{{cassandra_heap_newsize}}"
 {% else %}
 #MAX_HEAP_SIZE="4G"
 #HEAP_NEWSIZE="800M"
