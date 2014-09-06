@@ -2,7 +2,7 @@
 
 galaxy_info:
   author: pjan vandaele
-  company: Ansibles
+  company: ANXS
   description: Install and configure Apache Cassandra
   min_ansible_version: 1.5
   license: MIT
@@ -14,4 +14,4 @@ galaxy_info:
   - system
 
 dependencies:
-  - role: Ansibles.oracle-jdk
+  - role: ANXS.oracle-jdk

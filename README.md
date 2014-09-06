@@ -1,4 +1,4 @@
-## Ansibles - cassandra [![Build Status](https://travis-ci.org/Ansibles/cassandra.png)](https://travis-ci.org/Ansibles/cassandra)
+## ANXS - cassandra [![Build Status](https://travis-ci.org/ANXS/cassandra.png)](https://travis-ci.org/ANXS/cassandra)
 
 Ansible role which installs and configures Apache Cassandra.
 
@@ -8,7 +8,7 @@ Ansible role which installs and configures Apache Cassandra.
 ##### Ansible
 
 It has been tested on Ansible 1.5 and above, and depends on the following roles:
-  - Ansibles.oracle-jdk
+  - ANXS.oracle-jdk
 
 
 #### Variables
@@ -31,4 +31,4 @@ Licensed under the MIT License. See the LICENSE file for details.
 
 #### Feedback, bug-reports, requests, ...
 
-Are [welcome](https://github.com/ansibles/cassandra/issues)!
+Are [welcome](https://github.com/ANXS/cassandra/issues)!
