@@ -2,5 +2,10 @@
 
 - include: source.yml
   when: cassandra_install_method == "source"
+
 - include: package.yml
-  when: cassandra_install_method == "package"
+  when: cassandra_install_method == "package" and (ansible_os_family == 'Debian')
+
+- include: package_rhel.yml
+  when: cassandra_install_method == "package" and (ansible_os_family == 'RedHat')
+
