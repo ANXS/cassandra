@@ -2,7 +2,6 @@
 
 Ansible role which installs and configures Apache Cassandra.
 
-
 #### Requirements & Dependencies
 
 ##### Ansible
