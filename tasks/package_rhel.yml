@@ -1,0 +1,22 @@
+# file: cassandra/tasks/package_rhel.yml
+
+- include: user.yml
+
+- include_vars: "package.yml"
+
+- name: Cassandra | Make sure the ansible required dependencies are installed
+  yum:
+    pkg: "python-pycurl"
+    state: present
+
+- name: copy datastax repository
+  copy: src=datastax.repo
+        dest=/etc/yum.repos.d/
+        owner=root group=root mode=0644
+
+- name: Cassandra | Install the cassandra package
+  yum:
+    name: "{{ cassandra_package_version }}"
+    state: present
+
+- include: package_configure.yml
