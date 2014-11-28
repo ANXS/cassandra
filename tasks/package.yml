@@ -21,7 +21,7 @@
 
 - name: Cassandra | Install the cassandra package
   apt:
-    name: "cassandra=2.0.11"
+    name: "cassandra"
     state: present
     update_cache: yes
 
