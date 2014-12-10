@@ -25,4 +25,10 @@
     state: present
     update_cache: yes
 
+- name: Cassandra | Install datastax agent
+  apt:
+    name: "datastax-agent"
+    state: present
+    update_cache: yes
+
 - include: package_configure.yml

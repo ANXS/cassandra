@@ -18,3 +18,13 @@
     - "log4j-tools.properties"
   notify:
     - restart cassandra
+
+- name: Cassandra | Update datastax agent configuration
+  template:
+    src: "address.yaml.j2"
+    dest: "/var/lib/datastax-agent/conf/address.yaml"
+    owner: "opscenter-agent"
+    group: "opscenter-agent"
+    mode: 0644
+  notify:
+    - restart datastax agent
