@@ -1,8 +1,8 @@
 # file: cassandra/defaults/main.yml
 
 cassandra_install_method: "package"
-cassandra_source_version: "2.0.6"
-cassandra_source_url: "http://archive.apache.org/dist/cassandra/{{cassandra_source_version}}/apache-cassandra-{{cassandra_source_version}}-bin.tar.gz"
+cassandra_version: "2.0.6"
+cassandra_source_url: "http://archive.apache.org/dist/cassandra/{{cassandra_version}}/apache-cassandra-{{cassandra_version}}-bin.tar.gz"
 
 cassandra_user: "cassandra"
 cassandra_group: "cassandra"
