@@ -11,12 +11,12 @@
 
 - name: Cassandra | Add the datastax repository apt-key
   apt_key:
-    url: "http://debian.datastax.com/debian/repo_key"
+    url: "https://debian.datastax.com/debian/repo_key"
     state: present
 
 - name: Cassandra | Add the datastax repository
   apt_repository:
-    repo: "deb http://debian.datastax.com/community stable main"
+    repo: "deb https://debian.datastax.com/community stable main"
     state: present
 
 - name: Cassandra | Install the cassandra package
