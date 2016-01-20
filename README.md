@@ -7,7 +7,7 @@ Ansible role which installs and configures Apache Cassandra.
 
 ##### Ansible
 
-It has been tested on Ansible 1.5 and above, and depends on the following roles:
+It has been tested on Ansible 1.9 and above, and depends on the following roles:
   - ANXS.oracle-jdk
 
 
